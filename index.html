@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="西瓜籽">
+<meta name="theme-color" content="#FFF5F0">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%23FF6B6B'/><text x='90' y='115' text-anchor='middle' font-size='90'>🍉</text></svg>">
+<link rel="manifest" href="manifest.json">
+<title>西瓜籽</title>
+<style>
+  :root {
+    --peach: #FF6B6B;
+    --peach-light: #FFF0ED;
+    --peach-soft: #FFE8E0;
+    --green: #4ECDC4;
+    --green-light: #E8F8F5;
+    --yellow: #FFE66D;
+    --yellow-light: #FFFBE6;
+    --text: #2D3436;
+    --text-light: #636E72;
+    --bg: #FAF7F5;
+    --card: #FFFFFF;
+    --radius: 16px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --safe-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    min-height: 100dvh;
+  }
+
+  /* ── Header ── */
+  .header {
+    position: relative;
+    padding: 48px 20px 24px;
+    padding-top: max(48px, env(safe-area-inset-top, 20px));
+    text-align: center;
+    background: linear-gradient(180deg, var(--peach-light) 0%, var(--bg) 100%);
+  }
+  .header .header-ask-btn {
+    position: absolute; top: 16px; right: 16px;
+    top: max(16px, env(safe-area-inset-top, 16px));
+    padding: 8px 16px; border-radius: 20px;
+    background: var(--peach); color: #fff;
+    font-size: 13px; font-weight: 600;
+    border: none; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255,107,107,0.3);
+  }
+  .header .emoji { font-size: 56px; display: block; margin-bottom: 8px; }
+  .header h1 { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+  .header .sub {
+    font-size: 14px; color: var(--text-light); margin-top: 4px;
+  }
+  .header .badge {
+    display: inline-block; margin-top: 8px;
+    background: transparent; color: var(--peach);
+    font-size: 13px; font-weight: 700;
+    padding: 0; border-radius: 0;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Cards ── */
+  .container { padding: 0 16px 24px; max-width: 480px; margin: 0 auto; }
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+  }
+  .card-header {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 14px;
+  }
+  .card-header .icon { font-size: 20px; }
+  .card-header .title { font-size: 15px; font-weight: 700; }
+
+  /* ── Age Counter ── */
+  .age-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+    text-align: center;
+  }
+  .age-grid .num {
+    font-size: 36px; font-weight: 800;
+    background: linear-gradient(135deg, var(--peach), #FF8E8E);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .age-grid .label {
+    font-size: 11px; color: var(--text-light); margin-top: 2px; text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── Quick Action ── */
+  .quick-actions {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  }
+  .action-btn {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 14px; border-radius: 14px; border: none;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+  .action-btn:active { transform: scale(0.96); opacity: 0.85; }
+  .action-btn.primary { background: var(--peach); color: #fff; }
+  .action-btn.secondary { background: var(--green-light); color: #2D6A63; }
+  .action-btn.outline { background: #fff; color: var(--text); border: 1.5px solid #E0E0E0; }
+
+  /* ── Milestone ── */
+  .milestone-list { list-style: none; }
+  .milestone-list li {
+    display: flex; gap: 12px; padding: 10px 0;
+    border-bottom: 1px solid #F0F0F0;
+  }
+  .milestone-list li:last-child { border-bottom: none; }
+  .milestone-date {
+    flex-shrink: 0; width: 44px; height: 44px;
+    background: var(--yellow-light); border-radius: 12px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .milestone-date .md { font-size: 16px; font-weight: 700; color: #C9A800; line-height: 1; }
+  .milestone-date .mm { font-size: 10px; color: #B8A030; }
+  .milestone-text { font-size: 14px; line-height: 1.55; padding-top: 3px; }
+  .milestone-text .highlight { color: var(--peach); font-weight: 600; }
+
+  /* ── Vocab by day ── */
+  .vocab-day { margin-bottom: 14px; }
+  .vocab-day:last-child { margin-bottom: 0; }
+  .vocab-day-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+  }
+  .vocab-day-header .v-date {
+    font-size: 13px; font-weight: 700; color: var(--text);
+  }
+  .vocab-day-header .v-shows {
+    font-size: 11px; color: var(--text-light);
+  }
+  .vocab-word-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px; border-radius: 8px;
+    margin-bottom: 3px; background: var(--green-light);
+  }
+  .vocab-word-row .vw-word {
+    font-size: 15px; font-weight: 800; color: #2D6A63;
+    min-width: 72px;
+  }
+  .vocab-word-row .vw-cn {
+    font-size: 12px; color: var(--text-light);
+  }
+  .vocab-word-row .vw-count {
+    margin-left: auto; font-size: 11px; color: #5A9E8F;
+    font-weight: 600;
+  }
+  .vocab-word-row .vw-show {
+    font-size: 10px; color: #D4A53C;
+    background: #FFF8E8; padding: 1px 6px; border-radius: 6px;
+    max-width: 72px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .vocab-empty {
+    text-align: center; color: #bbb; font-size: 13px;
+    padding: 16px 0;
+  }
+
+  /* ── Observation Modal ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 100;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    align-items: flex-end; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-sheet {
+    background: #fff; width: 100%; max-width: 480px;
+    border-radius: 20px 20px 0 0; padding: 24px 20px;
+    padding-bottom: calc(24px + var(--safe-bottom));
+    animation: slideUp 0.25s ease-out;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal-sheet h3 { font-size: 17px; margin-bottom: 16px; }
+  .modal-sheet textarea {
+    width: 100%; height: 120px; border: 2px solid #E8E8E8;
+    border-radius: 12px; padding: 12px; font-size: 15px;
+    font-family: inherit; resize: none; outline: none;
+  }
+  .modal-sheet textarea:focus { border-color: var(--peach); }
+  .modal-actions { display: flex; gap: 10px; margin-top: 14px; }
+  .modal-actions button {
+    flex: 1; padding: 12px; border-radius: 12px;
+    border: none; font-size: 15px; font-weight: 600; cursor: pointer;
+  }
+  .modal-actions .cancel { background: #F0F0F0; color: var(--text-light); }
+  .modal-actions .save { background: var(--peach); color: #fff; }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed; top: 60px; left: 50%; transform: translateX(-50%);
+    background: #2D3436; color: #fff; padding: 10px 24px;
+    border-radius: 20px; font-size: 13px; font-weight: 600;
+    opacity: 0; transition: opacity 0.3s; z-index: 200; pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+
+  /* ── Install prompt ── */
+  .install-banner {
+    display: none; background: var(--card); border-radius: var(--radius);
+    padding: 14px 18px; margin-bottom: 14px;
+    box-shadow: var(--shadow);
+    align-items: center; gap: 12px; font-size: 13px;
+  }
+  .install-banner.active { display: flex; }
+  .install-banner .ib-btn {
+    flex-shrink: 0; padding: 8px 16px; border-radius: 16px;
+    background: var(--peach); color: #fff; font-size: 12px; font-weight: 600;
+    border: none; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="emoji">🍉</span>
+  <h1>西瓜籽</h1>
+  <button class="header-ask-btn" onclick="askIma()">问一问</button>
+  <div class="sub">2022.07.26 · 女孩</div>
+</div>
+
+<div class="container">
+
+  <!-- 年龄 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">⏳</span><span class="title">瓜籽多大了</span>
+    </div>
+    <div class="age-grid" id="ageGrid"></div>
+  </div>
+
+  <!-- 快速记录 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">✏️</span><span class="title">今天瓜籽…</span>
+    </div>
+    <div class="quick-actions">
+      <button class="action-btn primary" onclick="openObserve()">📝 记一笔</button>
+      <button class="action-btn secondary" onclick="viewNotes()">📋 最近记录</button>
+    </div>
+  </div>
+
+  <!-- 最近里程碑 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">🌟</span><span class="title">最近里程碑</span>
+    </div>
+    <ul class="milestone-list" id="milestoneList"></ul>
+  </div>
+
+  <!-- 近3日词汇 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="icon">🔤</span><span class="title">近 3 日词汇</span>
+      <span style="margin-left: auto; font-size: 11px; color: var(--text-light);" id="vocabUpdated"></span>
+    </div>
+    <div id="vocabDayList"></div>
+  </div>
+
+  <!-- 添加到主屏幕提示 -->
+  <div class="install-banner" id="installBanner">
+    <span>📲 添加到手机主屏幕，随时查看</span>
+    <button class="ib-btn" onclick="showInstallHelp()">怎么加</button>
+  </div>
+</div>
+
+<!-- 观察记录弹窗 -->
+<div class="modal-overlay" id="observeModal">
+  <div class="modal-sheet">
+    <h3>📝 记录瓜籽的今天</h3>
+    <textarea id="observeInput" placeholder="比如：今天自己穿鞋了、学会了一个新词、发脾气但自己冷静下来了…"></textarea>
+    <div class="modal-actions">
+      <button class="cancel" onclick="closeObserve()">取消</button>
+      <button class="save" onclick="saveObservation()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 笔记列表弹窗 -->
+<div class="modal-overlay" id="notesModal">
+  <div class="modal-sheet" style="max-height: 70vh; overflow-y: auto;">
+    <h3>📋 最近记录</h3>
+    <div id="notesList" style="font-size:14px; line-height:1.6;"></div>
+    <div class="modal-actions">
+      <button class="cancel" onclick="closeNotes()">关闭</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── 年龄计算 ──
+const BIRTH = new Date(2022, 6, 26); // 7月 = 6 (0-indexed)
+
+function calcAge() {
+  const now = new Date();
+  let years = now.getFullYear() - BIRTH.getFullYear();
+  let months = now.getMonth() - BIRTH.getMonth();
+  let days = now.getDate() - BIRTH.getDate();
+  if (days < 0) { months--; days += new Date(now.getFullYear(), now.getMonth(), 0).getDate(); }
+  if (months < 0) { years--; months += 12; }
+
+  document.getElementById('ageGrid').innerHTML = `
+    <div><div class="num">${years}</div><div class="label">岁</div></div>
+    <div><div class="num">${months}</div><div class="label">月</div></div>
+    <div><div class="num">${days}</div><div class="label">天</div></div>
+  `;
+}
+calcAge();
+
+// ── 里程碑 ──
+const milestones = [
+  { d: '8月6日', text: '<span class="highlight">第一次用手表打电话</span>：提前下课主动打给妈妈，还跟老师说"妈妈在路上"——懂事独立，记住嘱咐并执行' },
+  { d: '6月6日', text: '<span class="highlight">第一次做皮试没哭</span>，针打进去时说"我马上就要哭了"——坚强幽默，语言表达清晰' },
+  { d: '7月17日', text: '第一次呕吐（2024年），<span class="highlight">健康关注</span>' },
+];
+const ml = document.getElementById('milestoneList');
+milestones.forEach(m => {
+  const [mm, dd] = m.d.replace('月',' ').replace('日','').split(' ');
+  ml.innerHTML += `<li>
+    <div class="milestone-date"><span class="md">${dd}</span><span class="mm">${mm}月</span></div>
+    <div class="milestone-text">${m.text}</div>
+  </li>`;
+});
+
+// ── 近3日词汇（数据由 refresh_vocab_data.py 每次内嵌） ──
+const VOCAB_DATA = {"updated":"2026-08-06T18:32:11.929724+08:00","source":"腾讯文档","days":[{"date":"2026-08-04","label":"8月4日 周二","words":[{"word":"pig","count":65,"age":"3-4","show":"小猪佩奇"},{"word":"bubble","count":23,"age":"5-6","show":"小猪佩奇"},{"word":"mixture","count":11,"age":"6+","show":"小猪佩奇"},{"word":"make","count":10,"age":"4-5","show":"小猪佩奇"},{"word":"picnic","count":10,"age":"4-5","show":"小猪佩奇"},{"word":"get","count":8,"age":"4-5","show":"小猪佩奇"},{"word":"blow","count":7,"age":"4-5","show":"小猪佩奇"},{"word":"take","count":7,"age":"4-5","show":"小猪佩奇"},{"word":"puddle","count":6,"age":"5-6","show":"小猪佩奇"},{"word":"day","count":6,"age":"3-4","show":"小猪佩奇"},{"word":"play","count":5,"age":"3-4","show":"小猪佩奇"},{"word":"big","count":5,"age":"3-4","show":"小猪佩奇"},{"word":"love","count":5,"age":"3-4","show":"小猪佩奇"},{"word":"muddy","count":5,"age":"5-6","show":"小猪佩奇"},{"word":"leave","count":5,"age":"5-6","show":"小猪佩奇"},{"word":"look","count":4,"age":"4-5","show":"小猪佩奇"},{"word":"really","count":4,"age":"5-6","show":"小猪佩奇"},{"word":"bring","count":4,"age":"5-6","show":"小猪佩奇"},{"word":"jump","count":4,"age":"3-4","show":"小猪佩奇"},{"word":"go","count":4,"age":"4-5","show":"小猪佩奇"}]},{"date":"2026-08-05","label":"8月5日 周三","words":[{"word":"pig","count":121,"age":"3-4","show":"小猪佩奇"},{"word":"puddle","count":26,"age":"5-6","show":"小猪佩奇"},{"word":"bubble","count":23,"age":"5-6","show":"小猪佩奇"},{"word":"muddy","count":20,"age":"5-6","show":"小猪佩奇"},{"word":"jump","count":19,"age":"3-4","show":"小猪佩奇"},{"word":"love","count":19,"age":"3-4","show":"小猪佩奇"},{"word":"like","count":15,"age":"3-4","show":"小猪佩奇"},{"word":"good","count":15,"age":"3-4","show":"小猪佩奇"},{"word":"play","count":14,"age":"3-4","show":"小猪佩奇"},{"word":"make","count":12,"age":"4-5","show":"小猪佩奇"}]},{"date":"2026-08-06","label":"8月6日 周四","words":[]}]};
+
+function renderVocab() {
+  var data = VOCAB_DATA;
+  document.getElementById('vocabUpdated').textContent =
+    '更新于 ' + new Date(data.updated).toLocaleDateString('zh-CN', {month:'numeric',day:'numeric'});
+
+  var ageMap = { '3-4': '🌱', '4-5': '🌿', '5-6': '🌳', '6+': '🌲' };
+  var ageCn = { '3-4': '3-4岁', '4-5': '4-5岁', '5-6': '5-6岁', '6+': '6+岁' };
+
+  var container = document.getElementById('vocabDayList');
+  container.innerHTML = data.days.map(function(day) {
+    var words = day.words || [];
+    if (words.length === 0) {
+      return '<div class="vocab-day"><div class="vocab-day-header"><span class="v-date">' + day.label + '</span></div><div class="vocab-empty">暂无词汇</div></div>';
+    }
+    return '<div class="vocab-day"><div class="vocab-day-header"><span class="v-date">' + day.label + '</span>' + (day.shows ? '<span class="v-shows">' + day.shows + '</span>' : '') + '</div>' + words.map(function(w) {
+      return '<div class="vocab-word-row"><span class="vw-word">' + w.word + '</span><span class="vw-cn">' + (ageMap[w.age] || '') + ' ' + (ageCn[w.age] || w.age) + '</span>' + (w.show ? '<span class="vw-show">' + w.show + '</span>' : '') + '<span class="vw-count">×' + w.count + '</span></div>';
+    }).join('') + '</div>';
+  }).join('');
+}
+renderVocab();
+
+// ── 提问知识库 ──
+function askIma() {
+  // 跳转养瓜籽知识库
+  window.location.href = 'https://ima.qq.com/wiki/?shareId=7ab2baa14a1e2434386edb509fd104f46447ed6433e76eb9a5dce883b4236901';
+}
+
+// ── 观察记录 ──
+const STORAGE_KEY = 'xiguazi_observations';
+const OBS_API = 'http://10.43.28.143:8099';
+
+function openObserve() {
+  document.getElementById('observeModal').classList.add('active');
+  document.getElementById('observeInput').focus();
+}
+function closeObserve() {
+  document.getElementById('observeModal').classList.remove('active');
+  document.getElementById('observeInput').value = '';
+}
+
+async function saveObservation() {
+  var text = document.getElementById('observeInput').value.trim();
+  if (!text) return;
+
+  // 同时写 localStorage（离线兜底）和 Obsidian（后端 API）
+  var now = new Date();
+  var record = { date: now.toISOString().slice(0,10), text: text, time: now.toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit'}) };
+  var records = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  records.unshift(record);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(records.slice(0, 50)));
+
+  // 发送到后端写入 Obsidian
+  try {
+    var resp = await fetch(OBS_API + '/observe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text })
+    });
+    if (!resp.ok) throw new Error('API error');
+    showToast('✅ 已保存到 Obsidian');
+  } catch (e) {
+    // 后端不可用时静默降级，localStorage 已存
+    showToast('✅ 已保存（本地）');
+  }
+
+  closeObserve();
+}
+
+async function viewNotes() {
+  var nl = document.getElementById('notesList');
+  nl.innerHTML = '<div style="color:#999; text-align:center; padding:20px;">加载中…</div>';
+  document.getElementById('notesModal').classList.add('active');
+
+  // 优先从后端拉取 Obsidian 记录
+  try {
+    var resp = await fetch(OBS_API + '/observations');
+    if (resp.ok) {
+      var records = await resp.json();
+      if (records.length === 0) {
+        nl.innerHTML = '<div style="color:#999; text-align:center; padding:20px;">还没有记录，记一笔吧 🍉</div>';
+      } else {
+        nl.innerHTML = records.slice(0, 20).map(function(r) {
+          return '<div style="padding:10px 0; border-bottom:1px solid #f0f0f0;">'
+            + '<span style="color:#999; font-size:11px;">' + r.date + ' ' + r.time + '</span>'
+            + '<div style="margin-top:4px;">' + r.text + '</div></div>';
+        }).join('');
+      }
+      return;
+    }
+  } catch (e) { /* fallback to localStorage */ }
+
+  // 降级到 localStorage
+  var localRecords = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  if (localRecords.length === 0) {
+    nl.innerHTML = '<div style="color:#999; text-align:center; padding:20px;">还没有记录，记一笔吧 🍉</div>';
+  } else {
+    nl.innerHTML = localRecords.slice(0, 20).map(function(r) {
+      return '<div style="padding:10px 0; border-bottom:1px solid #f0f0f0;">'
+        + '<span style="color:#999; font-size:11px;">' + r.date + ' ' + r.time + '</span>'
+        + '<div style="margin-top:4px;">' + r.text + '</div></div>';
+    }).join('');
+  }
+}
+
+function closeNotes() {
+  document.getElementById('notesModal').classList.remove('active');
+}
+
+// ── Toast ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ── Install help ──
+function showInstallHelp() {
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const msg = isIOS
+    ? 'Safari 中点击下方「分享」按钮 → 往下滑 → 点击「添加到主屏幕」'
+    : 'Chrome 中点击右上角菜单 → 「添加到主屏幕」';
+  showToast(msg);
+}
+
+// Show install banner on iOS
+if (/iPhone|iPad|iPod/.test(navigator.userAgent) && !window.navigator.standalone) {
+  document.getElementById('installBanner').classList.add('active');
+}
+
+// Close modals on backdrop tap
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) { closeObserve(); closeNotes(); } });
+});
+</script>
+</body>
+</html>
