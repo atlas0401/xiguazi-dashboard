@@ -1,0 +1,17 @@
+{
+  "name": "西瓜籽",
+  "short_name": "西瓜籽",
+  "description": "西瓜籽成长看板",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF5F0",
+  "theme_color": "#FFF5F0",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%23FF6B6B'/><text x='90' y='115' text-anchor='middle' font-size='90'>🍉</text></svg>",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
+    }
+  ]
+}
