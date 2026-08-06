@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-06T21:54:25.333692+08:00",
+  "updated": "2026-08-06T22:01:16.121159+08:00",
   "source": "腾讯文档",
   "days": [
     {
@@ -227,7 +227,78 @@
     {
       "date": "2026-08-06",
       "label": "8月6日 周四",
-      "words": []
+      "words": [
+        {
+          "word": "apple",
+          "cn": "苹果",
+          "count": 0,
+          "age": "3-4",
+          "show": "每日词库"
+        },
+        {
+          "word": "banana",
+          "cn": "香蕉",
+          "count": 0,
+          "age": "3-4",
+          "show": "每日词库"
+        },
+        {
+          "word": "cat",
+          "cn": "猫",
+          "count": 0,
+          "age": "3-4",
+          "show": "每日词库"
+        },
+        {
+          "word": "dog",
+          "cn": "狗",
+          "count": 0,
+          "age": "3-4",
+          "show": "每日词库"
+        },
+        {
+          "word": "eat",
+          "cn": "吃",
+          "count": 0,
+          "age": "3-4",
+          "show": "每日词库"
+        },
+        {
+          "word": "drink",
+          "cn": "喝",
+          "count": 0,
+          "age": "3-4",
+          "show": "每日词库"
+        },
+        {
+          "word": "run",
+          "cn": "跑",
+          "count": 0,
+          "age": "3-4",
+          "show": "每日词库"
+        },
+        {
+          "word": "jump",
+          "cn": "跳",
+          "count": 0,
+          "age": "3-4",
+          "show": "每日词库"
+        },
+        {
+          "word": "big",
+          "cn": "大",
+          "count": 0,
+          "age": "3-4",
+          "show": "每日词库"
+        },
+        {
+          "word": "small",
+          "cn": "小",
+          "count": 0,
+          "age": "3-4",
+          "show": "每日词库"
+        }
+      ]
     }
   ],
   "milestones": [
