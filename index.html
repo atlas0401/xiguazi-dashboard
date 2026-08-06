@@ -374,8 +374,7 @@ function askIma() {
 }
 
 // ── 观察记录 ──
-const STORAGE_KEY = 'xiguazi_observations';
-const OBS_API = 'http://10.43.28.143:8099';
+var STORAGE_KEY = 'xiguazi_observations';
 
 function openObserve() {
   document.getElementById('observeModal').classList.add('active');
@@ -386,63 +385,27 @@ function closeObserve() {
   document.getElementById('observeInput').value = '';
 }
 
-async function saveObservation() {
+function saveObservation() {
   var text = document.getElementById('observeInput').value.trim();
   if (!text) return;
 
-  // 同时写 localStorage（离线兜底）和 Obsidian（后端 API）
   var now = new Date();
   var record = { date: now.toISOString().slice(0,10), text: text, time: now.toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit'}) };
   var records = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
   records.unshift(record);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(records.slice(0, 50)));
 
-  // 发送到后端写入 Obsidian
-  try {
-    var resp = await fetch(OBS_API + '/observe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: text })
-    });
-    if (!resp.ok) throw new Error('API error');
-    showToast('✅ 已保存到 Obsidian');
-  } catch (e) {
-    // 后端不可用时静默降级，localStorage 已存
-    showToast('✅ 已保存（本地）');
-  }
-
   closeObserve();
+  showToast('✅ 已保存');
 }
 
-async function viewNotes() {
+function viewNotes() {
+  var records = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
   var nl = document.getElementById('notesList');
-  nl.innerHTML = '<div style="color:#999; text-align:center; padding:20px;">加载中…</div>';
-  document.getElementById('notesModal').classList.add('active');
-
-  // 优先从后端拉取 Obsidian 记录
-  try {
-    var resp = await fetch(OBS_API + '/observations');
-    if (resp.ok) {
-      var records = await resp.json();
-      if (records.length === 0) {
-        nl.innerHTML = '<div style="color:#999; text-align:center; padding:20px;">还没有记录，记一笔吧 🍉</div>';
-      } else {
-        nl.innerHTML = records.slice(0, 20).map(function(r) {
-          return '<div style="padding:10px 0; border-bottom:1px solid #f0f0f0;">'
-            + '<span style="color:#999; font-size:11px;">' + r.date + ' ' + r.time + '</span>'
-            + '<div style="margin-top:4px;">' + r.text + '</div></div>';
-        }).join('');
-      }
-      return;
-    }
-  } catch (e) { /* fallback to localStorage */ }
-
-  // 降级到 localStorage
-  var localRecords = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  if (localRecords.length === 0) {
+  if (records.length === 0) {
     nl.innerHTML = '<div style="color:#999; text-align:center; padding:20px;">还没有记录，记一笔吧 🍉</div>';
   } else {
-    nl.innerHTML = localRecords.slice(0, 20).map(function(r) {
+    nl.innerHTML = records.slice(0, 20).map(function(r) {
       return '<div style="padding:10px 0; border-bottom:1px solid #f0f0f0;">'
         + '<span style="color:#999; font-size:11px;">' + r.date + ' ' + r.time + '</span>'
         + '<div style="margin-top:4px;">' + r.text + '</div></div>';
