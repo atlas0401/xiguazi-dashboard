@@ -301,7 +301,7 @@ calcAge();
 // ── 里程碑 ──
 const milestones = [{"d":"8月6日","text":"提前下课，用手表给妈妈打电话问\"到哪里了\"，并跟老师说\"妈妈在路上\"——**会独立使用通讯工具，记住并执行妈妈的嘱咐**"},{"d":"8月6日","text":"回家进大厅看到中医和奶奶在把脉，**主动说\"我们还是回去吧\"**；到电梯口问阿姨\"我听话吗？阿姨。是不是不听话就会被扎针？\"——**对医疗/扎针场景有明确恐惧，能用语言主动提出回避，会做因果推理把\"不听话\"和\"惩罚\"挂钩**（来源：凡丽微信）"},{"d":"7月17日","text":"第一次呕吐（00:10）"},{"d":"6月29日","text":"第一次看牙齿"},{"d":"6月6日","text":"第一次做皮试没哭，针打进去时说\"我马上就要哭了\"——**非常坚强，语言表达清晰**"},{"d":"3月8日","text":"有拉粑粑意识，会自主喊拉粑粑"}];
 const ml = document.getElementById('milestoneList');
-milestones.forEach(m => {
+milestones.slice(0, 3).forEach(m => {
   const [mm, dd] = m.d.replace('月',' ').replace('日','').split(' ');
   ml.innerHTML += `<li>
     <div class="milestone-date"><span class="md">${dd}</span><span class="mm">${mm}月</span></div>
