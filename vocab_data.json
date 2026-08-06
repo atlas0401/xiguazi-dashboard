@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-06T22:07:28.209693+08:00",
+  "updated": "2026-08-06T22:12:39.206692+08:00",
   "source": "腾讯文档",
   "days": [
     {
@@ -437,6 +437,76 @@
           "count": 0,
           "age": "小猪佩奇",
           "show": "Three Pigs · Muddy Puddles"
+        },
+        {
+          "word": "get",
+          "cn": "398",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Episode 1 · Burger Dog"
+        },
+        {
+          "word": "go",
+          "cn": "331",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles · Episode 1 · Burger Dog"
+        },
+        {
+          "word": "bingo",
+          "cn": "283",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Episode 1"
+        },
+        {
+          "word": "bluey",
+          "cn": "274",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Episode 1"
+        },
+        {
+          "word": "dad",
+          "cn": "246",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Episode 1 · Burger Dog"
+        },
+        {
+          "word": "go",
+          "cn": "668",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "little",
+          "cn": "662",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "come",
+          "cn": "442",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "one",
+          "cn": "380",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "say",
+          "cn": "378",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
         }
       ]
     }
