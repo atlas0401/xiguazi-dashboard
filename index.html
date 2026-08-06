@@ -153,7 +153,10 @@
   }
   .vocab-word-row .vw-word {
     font-size: 15px; font-weight: 800; color: #2D6A63;
-    min-width: 72px;
+    min-width: 56px;
+  }
+  .vocab-word-row .vw-trans {
+    font-size: 11px; color: #999; margin-left: 4px; margin-right: 6px;
   }
   .vocab-word-row .vw-cn {
     font-size: 12px; color: var(--text-light);
@@ -320,6 +323,7 @@ function renderVocab() {
 
   var ageMap = { '3-4': '🌱', '4-5': '🌿', '5-6': '🌳', '6+': '🌲' };
   var ageCn = { '3-4': '3-4岁', '4-5': '4-5岁', '5-6': '5-6岁', '6+': '6+岁' };
+  var cnDict = { 'pig':'猪','bubble':'泡泡','mixture':'混合物','make':'制作','picnic':'野餐','get':'得到','blow':'吹','take':'拿','puddle':'水坑','day':'日子','play':'玩','big':'大','love':'爱','muddy':'泥泞的','leave':'离开','look':'看','really':'真的','bring':'带来','jump':'跳','go':'去','like':'喜欢','good':'好' };
 
   var container = document.getElementById('vocabDayList');
   container.innerHTML = data.days.map(function(day) {
@@ -328,7 +332,7 @@ function renderVocab() {
       return '<div class="vocab-day"><div class="vocab-day-header"><span class="v-date">' + day.label + '</span></div><div class="vocab-empty">暂无词汇</div></div>';
     }
     return '<div class="vocab-day"><div class="vocab-day-header"><span class="v-date">' + day.label + '</span>' + (day.shows ? '<span class="v-shows">' + day.shows + '</span>' : '') + '</div>' + words.map(function(w) {
-      return '<div class="vocab-word-row"><span class="vw-word">' + w.word + '</span><span class="vw-cn">' + (ageMap[w.age] || '') + ' ' + (ageCn[w.age] || w.age) + '</span>' + (w.show ? '<span class="vw-show">' + w.show + '</span>' : '') + '<span class="vw-count">×' + w.count + '</span></div>';
+      return '<div class="vocab-word-row"><span class="vw-word">' + w.word + '</span>' + (cnDict[w.word] ? '<span class="vw-trans">' + cnDict[w.word] + '</span>' : '') + '<span class="vw-cn">' + (ageMap[w.age] || '') + ' ' + (ageCn[w.age] || w.age) + '</span>' + (w.show ? '<span class="vw-show">' + w.show + '</span>' : '') + '<span class="vw-count">×' + w.count + '</span></div>';
     }).join('') + '</div>';
   }).join('');
 }
