@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-06T22:01:16.121159+08:00",
+  "updated": "2026-08-06T22:07:28.209693+08:00",
   "source": "腾讯文档",
   "days": [
     {
@@ -297,6 +297,146 @@
           "count": 0,
           "age": "3-4",
           "show": "每日词库"
+        },
+        {
+          "word": "pig",
+          "cn": "45",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles · Bubbles"
+        },
+        {
+          "word": "bubble",
+          "cn": "23",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Bubbles"
+        },
+        {
+          "word": "puddle",
+          "cn": "21",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles · Bubbles"
+        },
+        {
+          "word": "muddy",
+          "cn": "15",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles · Bubbles"
+        },
+        {
+          "word": "jump",
+          "cn": "14",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles · Bubbles"
+        },
+        {
+          "word": "mixture",
+          "cn": "11",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Bubbles"
+        },
+        {
+          "word": "love",
+          "cn": "9",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles · Bubbles"
+        },
+        {
+          "word": "make",
+          "cn": "8",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Bubbles"
+        },
+        {
+          "word": "play",
+          "cn": "7",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles · Bubbles"
+        },
+        {
+          "word": "look",
+          "cn": "7",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles · Bubbles"
+        },
+        {
+          "word": "pig",
+          "cn": "25",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Three Pigs · Muddy Puddles"
+        },
+        {
+          "word": "puddle",
+          "cn": "15",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles"
+        },
+        {
+          "word": "like",
+          "cn": "13",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Three Pigs · Muddy Puddles"
+        },
+        {
+          "word": "burger",
+          "cn": "12",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Burger Dog"
+        },
+        {
+          "word": "wolf",
+          "cn": "10",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Three Pigs"
+        },
+        {
+          "word": "jump",
+          "cn": "10",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles"
+        },
+        {
+          "word": "muddy",
+          "cn": "10",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Muddy Puddles"
+        },
+        {
+          "word": "go",
+          "cn": "9",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Burger Dog · Three Pigs · Muddy Puddles"
+        },
+        {
+          "word": "jingo",
+          "cn": "9",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Three Pigs"
+        },
+        {
+          "word": "little",
+          "cn": "7",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Three Pigs · Muddy Puddles"
         }
       ]
     }
