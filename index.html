@@ -254,8 +254,7 @@
       <span class="icon">✏️</span><span class="title">今天瓜籽…</span>
     </div>
     <div class="quick-actions">
-      <button class="action-btn primary" onclick="openObserve()">📝 记一笔</button>
-      <button class="action-btn secondary" onclick="viewNotes()">📋 最近记录</button>
+      <a class="action-btn primary" href="https://docs.qq.com/aio/DYXhzcU5ITkpiUk1I" target="_blank" style="display:flex;align-items:center;justify-content:center;text-decoration:none;">📝 记一笔</a>
     </div>
   </div>
 
@@ -280,29 +279,6 @@
   <div class="install-banner" id="installBanner">
     <span>📲 添加到手机主屏幕，随时查看</span>
     <button class="ib-btn" onclick="showInstallHelp()">怎么加</button>
-  </div>
-</div>
-
-<!-- 观察记录弹窗 -->
-<div class="modal-overlay" id="observeModal">
-  <div class="modal-sheet">
-    <h3>📝 记录瓜籽的今天</h3>
-    <textarea id="observeInput" placeholder="比如：今天自己穿鞋了、学会了一个新词、发脾气但自己冷静下来了…"></textarea>
-    <div class="modal-actions">
-      <button class="cancel" onclick="closeObserve()">取消</button>
-      <button class="save" onclick="saveObservation()">保存</button>
-    </div>
-  </div>
-</div>
-
-<!-- 笔记列表弹窗 -->
-<div class="modal-overlay" id="notesModal">
-  <div class="modal-sheet" style="max-height: 70vh; overflow-y: auto;">
-    <h3>📋 最近记录</h3>
-    <div id="notesList" style="font-size:14px; line-height:1.6;"></div>
-    <div class="modal-actions">
-      <button class="cancel" onclick="closeNotes()">关闭</button>
-    </div>
   </div>
 </div>
 
@@ -373,50 +349,6 @@ function askIma() {
   window.location.href = 'https://ima.qq.com/wiki/?shareId=7ab2baa14a1e2434386edb509fd104f46447ed6433e76eb9a5dce883b4236901';
 }
 
-// ── 观察记录 ──
-var STORAGE_KEY = 'xiguazi_observations';
-
-function openObserve() {
-  document.getElementById('observeModal').classList.add('active');
-  document.getElementById('observeInput').focus();
-}
-function closeObserve() {
-  document.getElementById('observeModal').classList.remove('active');
-  document.getElementById('observeInput').value = '';
-}
-
-function saveObservation() {
-  var text = document.getElementById('observeInput').value.trim();
-  if (!text) return;
-
-  var now = new Date();
-  var record = { date: now.toISOString().slice(0,10), text: text, time: now.toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit'}) };
-  var records = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  records.unshift(record);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(records.slice(0, 50)));
-
-  closeObserve();
-  showToast('✅ 已保存');
-}
-
-function viewNotes() {
-  var records = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-  var nl = document.getElementById('notesList');
-  if (records.length === 0) {
-    nl.innerHTML = '<div style="color:#999; text-align:center; padding:20px;">还没有记录，记一笔吧 🍉</div>';
-  } else {
-    nl.innerHTML = records.slice(0, 20).map(function(r) {
-      return '<div style="padding:10px 0; border-bottom:1px solid #f0f0f0;">'
-        + '<span style="color:#999; font-size:11px;">' + r.date + ' ' + r.time + '</span>'
-        + '<div style="margin-top:4px;">' + r.text + '</div></div>';
-    }).join('');
-  }
-}
-
-function closeNotes() {
-  document.getElementById('notesModal').classList.remove('active');
-}
-
 // ── Toast ──
 function showToast(msg) {
   const t = document.getElementById('toast');
@@ -440,7 +372,7 @@ if (/iPhone|iPad|iPod/.test(navigator.userAgent) && !window.navigator.standalone
 
 // Close modals on backdrop tap
 document.querySelectorAll('.modal-overlay').forEach(m => {
-  m.addEventListener('click', e => { if (e.target === m) { closeObserve(); closeNotes(); } });
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('active'); });
 });
 </script>
 </body>
