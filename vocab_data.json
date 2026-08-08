@@ -1,12 +1,7 @@
 {
-  "updated": "2026-08-08T05:28:35.772502+08:00",
+  "updated": "2026-08-09T06:07:43.084059+08:00",
   "source": "腾讯文档",
   "days": [
-    {
-      "date": "2026-08-06",
-      "label": "8月6日 周四",
-      "words": []
-    },
     {
       "date": "2026-08-07",
       "label": "8月7日 周五",
@@ -156,6 +151,152 @@
     {
       "date": "2026-08-08",
       "label": "8月8日 周六",
+      "words": [
+        {
+          "word": "go",
+          "cn": "1652",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "get",
+          "cn": "1533",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "come",
+          "cn": "1030",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "little",
+          "cn": "977",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "bingo",
+          "cn": "869",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "one",
+          "cn": "863",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "bluey",
+          "cn": "822",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Episode 1"
+        },
+        {
+          "word": "dad",
+          "cn": "735",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Episode 1"
+        },
+        {
+          "word": "let",
+          "cn": "660",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "say",
+          "cn": "615",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "see",
+          "cn": "572",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "well",
+          "cn": "566",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "back",
+          "cn": "550",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "like",
+          "cn": "537",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "play",
+          "cn": "520",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "mum",
+          "cn": "501",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Episode 1"
+        },
+        {
+          "word": "want",
+          "cn": "492",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "know",
+          "cn": "440",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "good",
+          "cn": "430",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        },
+        {
+          "word": "look",
+          "cn": "418",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes · Episode 1"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-09",
+      "label": "8月9日 周日",
       "words": []
     }
   ],
