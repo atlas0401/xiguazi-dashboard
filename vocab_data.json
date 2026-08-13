@@ -1,12 +1,7 @@
 {
-  "updated": "2026-08-13T04:26:37.598660+08:00",
+  "updated": "2026-08-14T03:55:35.612179+08:00",
   "source": "腾讯文档",
   "days": [
-    {
-      "date": "2026-08-11",
-      "label": "8月11日 周二",
-      "words": []
-    },
     {
       "date": "2026-08-12",
       "label": "8月12日 周三",
@@ -156,6 +151,152 @@
     {
       "date": "2026-08-13",
       "label": "8月13日 周四",
+      "words": [
+        {
+          "word": "go",
+          "cn": "334",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "little",
+          "cn": "331",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "come",
+          "cn": "221",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "one",
+          "cn": "190",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "say",
+          "cn": "189",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "get",
+          "cn": "171",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "see",
+          "cn": "148",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "back",
+          "cn": "134",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "love",
+          "cn": "123",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "day",
+          "cn": "113",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "away",
+          "cn": "111",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "let",
+          "cn": "111",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "old",
+          "cn": "106",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "man",
+          "cn": "103",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "tree",
+          "cn": "102",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "two",
+          "cn": "93",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "sing",
+          "cn": "90",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "take",
+          "cn": "85",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "green",
+          "cn": "84",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        },
+        {
+          "word": "bone",
+          "cn": "83",
+          "count": 0,
+          "age": "小猪佩奇",
+          "show": "Nursery Rhymes"
+        }
+      ]
+    },
+    {
+      "date": "2026-08-14",
+      "label": "8月14日 周五",
       "words": []
     }
   ],
